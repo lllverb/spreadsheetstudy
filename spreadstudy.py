@@ -1,5 +1,4 @@
 import gspread
-import json
 import settings
 
 # ServiceAccountCredentials：Googleの各サービスへアクセスできるservice変数を生成します。
@@ -7,9 +6,6 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 SSK = settings.SSK
 JSN = settings.JSN
-
-print(SSK)
-print(JSN)
 
 
 # 2つのAPIを記述しないとリフレッシュトークンを3600秒毎に発行し続けなければならない
