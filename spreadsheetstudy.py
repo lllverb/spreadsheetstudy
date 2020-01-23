@@ -21,15 +21,17 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name(JSN, scope)
 # OAuth2の資格情報を使用してGoogle APIにログインします。
 gc = gspread.authorize(credentials)
 
-# 共有設定したスプレッドシートキーを変数[SPREADSHEET_KEY]に格納する。
+# 共有設定したスプレッドシートキーを変数SPREADSHEET_KEYに格納する。
 SPREADSHEET_KEY = SSK
 
-# 共有設定したスプレッドシートのシート1を開く
+# スプレッドシートのシート1を開く。
 worksheet = gc.open_by_key(SPREADSHEET_KEY).sheet1
 
-# A1セルの値を受け取る
+# A1の値を入手、数値化
 import_value = int(worksheet.acell("A1").value)
 
-# A1セルの値に100加算した値をB1セルに表示させる
+# A1に100を足す。
 export_value = import_value + 100
+
+# 縦、横の順番。1,2は縦が1横がBつまりB1に書き出す
 worksheet.update_cell(1, 2, export_value)
